@@ -1,0 +1,165 @@
+@reference "../src/app/globals.css";
+
+.hero {
+  @apply relative w-full bg-tg-dark-100 overflow-hidden;
+}
+
+.hero__texture {
+  @apply tg-texture-overlay;
+}
+
+.hero__texture::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(180deg, rgba(2, 23, 32, 0) 45%, rgb(2, 23, 32) 86%),
+              radial-gradient(ellipse at 50% 50%, rgba(2, 23, 32, 0) 0%, rgb(2, 23, 32) 100%);
+}
+
+.hero__content {
+  @apply relative z-10;
+}
+
+.hero__inner {
+  @apply pt-[80px] pb-[55px];
+}
+
+.hero__title-area {
+  @apply mb-[80px];
+}
+
+.hero__title {
+  @apply font-tiempos font-light text-h1 text-white whitespace-pre-line;
+}
+
+.hero__title-lines {
+  @apply block;
+}
+
+.hero__title-accent {
+  @apply tg-heading-italic text-tg-white-60;
+}
+
+.hero__bottom {
+  @apply flex items-start gap-[136px] pb-0;
+}
+
+.hero__cta-area {
+  @apply flex flex-col gap-[40px] w-[411px];
+}
+
+.hero__subtitle {
+  @apply tg-body-lg text-tg-body-text;
+}
+
+.hero__buttons {
+  @apply flex gap-[16px] items-start;
+}
+
+.hero__logos {
+  @apply grid grid-cols-3 w-[733px];
+}
+
+.hero__logo-cell {
+  @apply flex items-center justify-center h-[83px];
+  border-right: 1px dashed var(--color-tg-white-10);
+  border-bottom: 1px dashed var(--color-tg-white-10);
+}
+
+.hero__logo-cell:nth-child(3n) {
+  border-right: none;
+}
+
+.hero__logo-cell:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+.hero__logo-img {
+  @apply opacity-70 text-white transition-opacity duration-300;
+}
+
+.hero__logo-cell:hover .hero__logo-img {
+  @apply opacity-100;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .hero__bottom {
+    gap: 60px;
+  }
+
+  .hero__logos {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__inner {
+    @apply pt-[60px] pb-[60px];
+  }
+
+  .hero__title-area {
+    @apply mb-[48px];
+  }
+
+  .hero__title {
+    font-size: 56px;
+    letter-spacing: -1.12px;
+  }
+
+  .hero__bottom {
+    @apply flex-col gap-[60px];
+  }
+
+  .hero__cta-area {
+    @apply w-full max-w-[500px];
+  }
+
+  .hero__logos {
+    @apply w-full;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__inner {
+    @apply pt-[40px] pb-[40px];
+  }
+
+  .hero__title-area {
+    @apply mb-[32px];
+  }
+
+  .hero__title {
+    font-size: 42px;
+    letter-spacing: -0.84px;
+    @apply whitespace-normal;
+  }
+
+  .hero__bottom {
+    gap: 40px;
+  }
+
+  .hero__cta-area {
+    @apply gap-[24px];
+  }
+
+  .hero__subtitle {
+    @apply text-body-md;
+  }
+
+  .hero__buttons {
+    @apply flex-col w-full;
+  }
+
+  .hero__logos {
+    @apply grid-cols-2;
+  }
+
+  .hero__logo-cell {
+    @apply h-[64px];
+  }
+}

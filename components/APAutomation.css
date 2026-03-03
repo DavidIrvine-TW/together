@@ -1,0 +1,444 @@
+@reference "../src/app/globals.css";
+
+/* =========================================================
+   Section wrapper
+   ========================================================= */
+.ap-automation {
+  @apply w-full bg-white max-w-[1440px] mx-auto;
+}
+
+/* =========================================================
+   Container applies padding (section-container handles max-width + horizontal px)
+   ========================================================= */
+.ap-automation__container {
+  @apply pt-[164px] pb-[144px];
+}
+
+/* =========================================================
+   Two-column flex row
+   ========================================================= */
+.ap-automation__row {
+  @apply flex gap-[16px] items-start;
+}
+
+/* =========================================================
+   LEFT COLUMN
+   ========================================================= */
+.ap-automation__left {
+  @apply flex-1 border-t border-dashed border-tg-dark-45;
+}
+
+.ap-automation__heading-area {
+  @apply mt-[55px] mb-[40px];
+}
+
+.ap-automation__heading {
+  @apply tg-heading-h2 text-tg-dark-100 max-w-[410px];
+}
+
+/* =========================================================
+   Tab list
+   ========================================================= */
+.ap-automation__tabs {
+  @apply flex flex-col;
+}
+
+.ap-automation__tab {
+  @apply relative text-left bg-transparent border-0 w-full cursor-pointer pt-0 pb-0;
+}
+
+/* Active tab */
+.ap-automation__tab--active {
+  @apply flex flex-col gap-[12px] pl-[32px] py-[16px] border-l border-l-tg-dark-10;
+}
+
+.ap-automation__tab--active .ap-automation__tab-title {
+  @apply font-inter font-medium text-[18px] text-tg-dark-100 tracking-[-0.27px] leading-[1.5];
+}
+
+/* Progress bar — animates from top to bottom */
+.ap-automation__tab-progress {
+  @apply absolute left-0 top-0 w-[2px] h-full bg-tg-electric;
+  transform-origin: top;
+}
+
+/* Inactive tabs */
+.ap-automation__tab--inactive {
+  @apply pl-[32px] py-[16px] border-l border-l-tg-dark-10;
+}
+
+.ap-automation__tab--inactive .ap-automation__tab-title {
+  @apply font-inter font-medium text-[18px] tracking-[-0.27px] leading-[1.5] text-tg-dark-60 transition-colors;
+}
+
+.ap-automation__tab--inactive:hover .ap-automation__tab-title {
+  @apply text-tg-dark-80;
+}
+
+/* Tab content wrapper for animation */
+.ap-automation__tab-content {
+  @apply flex flex-col gap-[12px] overflow-hidden;
+}
+
+/* Tab description (active state only) */
+.ap-automation__tab-desc {
+  @apply tg-body-md text-tg-dark-80 max-w-[428px];
+}
+
+/* Tab link (replaces TextLink inside button for valid HTML) */
+.ap-automation__tab-link {
+  @apply font-inter font-normal text-body-md leading-[1.5] text-tg-dark-100 whitespace-pre cursor-pointer;
+}
+
+.ap-automation__tab-link-arrow {
+  @apply inline-block transition-transform duration-300;
+}
+
+.ap-automation__tab-link:hover .ap-automation__tab-link-arrow {
+  transform: translateX(8px);
+}
+
+/* =========================================================
+   RIGHT COLUMN — Lavender illustration panel
+   ========================================================= */
+.ap-automation__illustration {
+  @apply relative bg-tg-lavender overflow-hidden shrink-0 w-[735px] rounded-btn border-t border-dashed border-t-tg-dark-45;
+}
+
+.ap-illustration__inner {
+  @apply flex flex-col items-center justify-between h-full pt-[66px] px-[40px] pb-[40px];
+}
+
+/* =========================================================
+   Invoice card
+   ========================================================= */
+.ap-illustration__card-wrap {
+  @apply relative flex-1 w-[400px] mx-auto;
+}
+
+
+.ap-illustration__card {
+  @apply bg-white flex flex-col w-full rounded-[2px] px-[32px] py-[20px] h-full overflow-hidden relative z-[1];
+  box-shadow: 0 4px 24px var(--color-tg-dark-10), 0 1px 4px var(--color-tg-dark-10);
+}
+
+/* Card top: company info */
+.ap-illustration__card-top {
+  @apply mb-[20px];
+}
+
+/* Invoice meta + Bill to row */
+.ap-illustration__meta-billto-row {
+  @apply flex justify-between mb-[16px];
+}
+
+.ap-illustration__company {
+  @apply flex flex-col gap-[20px];
+}
+
+.ap-illustration__company-name {
+  @apply font-inter font-medium text-[16px] text-black tracking-[-0.32px] leading-[1.2];
+}
+
+.ap-illustration__company-address {
+  @apply font-mono font-normal text-[9px] text-tg-dark-60 leading-[1.5] tracking-[-0.18px];
+}
+
+.ap-illustration__invoice-meta {
+  @apply flex flex-col gap-[5px] text-[9px] text-right leading-[13px] tracking-[-0.18px];
+}
+
+.ap-illustration__meta-row {
+  @apply flex gap-[4px] items-start;
+}
+
+.ap-illustration__meta-label {
+  @apply font-inter font-medium text-tg-dark-80;
+}
+
+.ap-illustration__meta-value {
+  @apply font-mono font-normal text-tg-dark-60;
+}
+
+/* Bill to */
+.ap-illustration__bill-to {
+  @apply flex flex-col gap-[9px];
+}
+
+.ap-illustration__bill-to-header {
+  @apply font-inter font-medium text-[10px] text-black tracking-[-0.2px] leading-[1.2];
+}
+
+.ap-illustration__bill-to-name {
+  @apply text-tg-dark-60;
+}
+
+.ap-illustration__bill-to-address {
+  @apply font-mono font-normal text-[9px] text-tg-dark-60 leading-[1.5] tracking-[-0.18px];
+}
+
+/* Card bottom: notes + totals */
+.ap-illustration__card-bottom {
+  @apply flex flex-col;
+}
+
+.ap-illustration__notes {
+  @apply flex flex-col gap-[9px];
+}
+
+.ap-illustration__notes-label {
+  @apply font-inter font-medium text-[9px] text-tg-dark-60 leading-[1.2];
+}
+
+.ap-illustration__notes-text {
+  @apply font-mono font-normal text-[9px] text-tg-dark-60 leading-[1.5] tracking-[-0.18px];
+}
+
+/* Decorative sidebars */
+.ap-illustration__sidebar {
+  @apply absolute w-[180px] h-[417px] z-[2];
+  top: 95px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.ap-illustration__sidebar--left {
+  left: -53px;
+}
+
+.ap-illustration__sidebar--right {
+  right: -53px;
+}
+
+/* Scan annotation lines */
+.ap-illustration__flash {
+  @apply absolute inset-0 z-[5] pointer-events-none rounded-[2px];
+  background-color: white;
+}
+
+.ap-illustration__scan-line {
+  @apply absolute h-[1.5px] z-[3] pointer-events-none;
+  background-color: var(--color-tg-electric);
+  opacity: 0.35;
+}
+
+/* Gradient fade at bottom of invoice */
+.ap-illustration__gradient-fade {
+  @apply absolute bottom-0 left-0 right-0 z-[2] pointer-events-none;
+  background: linear-gradient(to bottom, var(--color-tg-electric), transparent);
+  opacity: 0.25;
+}
+
+/* Line items table */
+.ap-illustration__table {
+  @apply flex flex-col w-full mb-[14px] border border-tg-dark-10 rounded-btn overflow-hidden;
+}
+
+.ap-illustration__table-header {
+  @apply flex w-full bg-tg-dark-10 px-[10px] py-[6px];
+}
+
+.ap-illustration__table-row {
+  @apply flex w-full px-[10px] py-[7px] border-t border-t-tg-dark-10;
+}
+
+.ap-illustration__table-col {
+  @apply font-inter font-normal text-[9px] leading-[1.4] text-tg-dark-60;
+}
+
+.ap-illustration__table-header .ap-illustration__table-col {
+  @apply font-medium text-[8px] tracking-[0.4px] uppercase text-tg-dark-45;
+}
+
+.ap-illustration__table-col--desc {
+  @apply flex-1;
+}
+
+.ap-illustration__table-col--qty {
+  @apply w-[28px] text-center;
+}
+
+.ap-illustration__table-col--rate {
+  @apply w-[60px] text-right;
+}
+
+.ap-illustration__table-col--amount {
+  @apply w-[60px] text-right text-tg-dark-80;
+}
+
+.ap-illustration__table-header .ap-illustration__table-col--amount {
+  @apply text-tg-dark-45;
+}
+
+/* Totals */
+.ap-illustration__totals {
+  @apply flex flex-col items-end gap-[4px];
+}
+
+.ap-illustration__total-row {
+  @apply flex gap-[16px] items-center;
+}
+
+.ap-illustration__total-label {
+  @apply font-inter font-normal text-[9px] text-tg-dark-45 min-w-[60px] text-right;
+}
+
+.ap-illustration__total-value {
+  @apply font-inter font-normal text-tg-dark-100 text-[9px] min-w-[52px] text-right;
+}
+
+.ap-illustration__total-row--grand {
+  @apply mt-[4px] pt-[6px] border-t border-t-tg-dark-10;
+}
+
+.ap-illustration__total-row--grand .ap-illustration__total-label {
+  @apply font-medium text-tg-dark-60 text-[10px];
+}
+
+.ap-illustration__total-row--grand .ap-illustration__total-value {
+  @apply font-medium text-[11px] text-tg-dark-100;
+}
+
+/* =========================================================
+   Progress stepper
+   ========================================================= */
+.ap-illustration__stepper {
+  @apply inline-flex items-center justify-center shrink-0 mt-[50px] gap-[11px];
+}
+
+.ap-illustration__step {
+  @apply flex items-center gap-[11px];
+}
+
+.ap-illustration__step-dot {
+  @apply flex items-center justify-center shrink-0 size-[15px] rounded-full;
+}
+
+.ap-illustration__step-dot--done {
+  @apply bg-tg-electric text-white;
+}
+
+.ap-illustration__step-dot--green {
+  background-color: #22c55e;
+  @apply text-white;
+}
+
+.ap-illustration__step-dot--active {
+  @apply border-[1.4px] border-tg-electric bg-transparent;
+}
+
+.ap-illustration__step-dot--active::after {
+  @apply hidden;
+}
+
+.ap-illustration__step-dot--spinner {
+  border-color: transparent;
+  border-top-color: var(--color-tg-electric);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.ap-illustration__step-dot--pending {
+  @apply bg-transparent border-[1.4px];
+  border-color: rgba(2, 23, 32, 0.2);
+}
+
+.ap-illustration__step-content {
+  @apply flex items-center gap-[4px];
+}
+
+.ap-illustration__step-label {
+  @apply font-inter font-medium text-[15px] text-black tracking-[-0.3px] leading-[1.2] whitespace-nowrap;
+}
+
+.ap-illustration__step--active .ap-illustration__step-label {
+  @apply text-black;
+}
+
+.ap-illustration__step--pending .ap-illustration__step-label {
+  @apply text-black;
+}
+
+.ap-illustration__step-time {
+  @apply font-inter font-medium text-[15px] tracking-[-0.3px] leading-[1.2] whitespace-nowrap inline-block;
+  color: rgba(0, 0, 0, 0.5);
+  font-variant-numeric: tabular-nums;
+  min-width: 68px;
+}
+
+/* Connector between steps */
+.ap-illustration__step-connector {
+  @apply shrink-0 mx-[12px] font-inter text-[15px] leading-none tracking-[-2px] -translate-y-[1px];
+  color: rgba(2, 23, 32, 0.45);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1280px) {
+  .ap-automation__illustration {
+    @apply w-full max-w-[600px];
+  }
+
+  .ap-automation__row {
+    @apply flex-wrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ap-automation__container {
+    @apply pt-[80px] pb-[80px];
+  }
+
+  .ap-automation__row {
+    @apply flex-col gap-[40px];
+  }
+
+  .ap-automation__left {
+    @apply w-full;
+  }
+
+  .ap-automation__heading {
+    @apply max-w-full text-[36px];
+  }
+
+  .ap-automation__illustration {
+    @apply w-full max-w-full h-[420px];
+  }
+}
+
+@media (max-width: 768px) {
+  .ap-automation__container {
+    @apply pt-[60px] pb-[60px];
+  }
+
+  .ap-automation__heading {
+    @apply text-[28px];
+  }
+
+  .ap-illustration__inner {
+    @apply p-[24px];
+  }
+
+  .ap-illustration__card-wrap {
+    @apply w-full;
+  }
+
+  .ap-illustration__sidebar {
+    @apply hidden;
+  }
+
+  .ap-illustration__stepper {
+    @apply flex-wrap gap-[8px] rounded-[12px] justify-start;
+  }
+
+  .ap-illustration__step-connector {
+    @apply hidden;
+  }
+
+  .ap-automation__illustration {
+    @apply h-auto min-h-[360px];
+  }
+}

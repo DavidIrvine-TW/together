@@ -1,0 +1,115 @@
+@reference "../src/app/globals.css";
+
+.footer {
+  @apply w-full bg-tg-dark-100 relative;
+}
+
+.footer__texture {
+  @apply tg-texture-overlay;
+}
+
+.footer__texture::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(180deg, rgba(2, 23, 32, 0) 31%, rgb(2, 23, 32) 86%),
+              radial-gradient(ellipse at 50% 50%, rgba(2, 23, 32, 0) 0%, rgb(2, 23, 32) 100%);
+}
+
+.footer__inner {
+  @apply relative z-10 pt-[128px] pb-0;
+}
+
+/* CTA */
+.footer__cta {
+  @apply flex flex-col gap-[40px] items-start mb-[128px];
+}
+
+.footer__cta-heading {
+  @apply font-tiempos font-light text-white tracking-[-1.92px] leading-[1.05];
+  font-size: 72px;
+}
+
+.footer__cta-italic {
+  @apply tg-heading-italic;
+}
+
+/* Navigation Grid */
+.footer__nav {
+  @apply flex justify-between gap-[24px] pb-[80px];
+  border-top: 1px dashed var(--color-tg-white-10);
+  padding-top: 40px;
+}
+
+.footer__nav-col {
+  @apply flex flex-col gap-[40px] flex-1;
+}
+
+.footer__nav-section {
+  @apply flex flex-col gap-[16px];
+}
+
+.footer__nav-heading {
+  @apply font-inter font-medium text-[14px] text-white leading-[1.5];
+}
+
+.footer__nav-list {
+  @apply flex flex-col gap-[12px];
+}
+
+.footer__nav-link {
+  @apply font-inter font-normal text-[14px] leading-[1.5] transition-colors;
+  color: var(--color-tg-white-60);
+}
+
+.footer__nav-link:hover {
+  color: white;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer__inner {
+    @apply pt-[80px];
+  }
+
+  .footer__cta {
+    @apply mb-[80px];
+  }
+
+  .footer__cta-heading {
+    font-size: 48px;
+  }
+
+  .footer__nav {
+    @apply flex-wrap;
+  }
+
+  .footer__nav-col {
+    @apply flex-none;
+    width: calc(33.333% - 16px);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__inner {
+    @apply pt-[60px];
+  }
+
+  .footer__cta {
+    @apply mb-[60px];
+  }
+
+  .footer__cta-heading {
+    font-size: 36px;
+    letter-spacing: -0.96px;
+  }
+
+  .footer__nav {
+    @apply flex-col gap-[40px];
+  }
+
+  .footer__nav-col {
+    width: 100%;
+  }
+
+}

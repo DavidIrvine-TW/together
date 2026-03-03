@@ -1,0 +1,181 @@
+@reference "../src/app/globals.css";
+
+.vendor-management {
+  @apply w-full bg-white;
+}
+
+.vendor-management__inner {
+  @apply pt-[128px] pb-[80px];
+}
+
+.vendor-management__heading {
+  @apply flex flex-col gap-[20px] items-start mb-[64px];
+}
+
+.vendor-management__title {
+  @apply tg-heading-h2 text-tg-dark-100 max-w-[628px];
+}
+
+.vendor-management__subtitle {
+  @apply tg-body-lg text-tg-dark-80 max-w-[540px];
+}
+
+.vendor-management__cards {
+  @apply overflow-visible cursor-default;
+}
+
+.vendor-management__cards .vendor-card__illustration {
+  @apply cursor-grab;
+}
+
+.vendor-management__cards.swiper-grab .vendor-card__illustration:active {
+  @apply cursor-grabbing;
+}
+
+.vendor-management__cards .swiper-wrapper {
+  @apply items-start;
+}
+
+.vendor-card {
+  @apply flex flex-col flex-shrink-0;
+  width: 628px;
+  height: auto;
+}
+
+.vendor-card__title {
+  @apply font-inter font-medium text-[18px] text-tg-dark-100 tracking-[-0.27px] mb-[20px];
+}
+
+.vendor-card__illustration {
+  @apply w-full h-[420px] rounded-btn overflow-hidden relative;
+}
+
+.vendor-card__illustration--eucalyptus {
+  @apply bg-tg-eucalyptus;
+}
+
+.vendor-card__illustration--olive {
+  @apply bg-tg-olive;
+}
+
+.vendor-card__illustration--sea {
+  @apply bg-tg-sea;
+}
+
+.vendor-card__body {
+  @apply pt-[28px] pb-[32px] flex flex-col gap-[20px] max-w-[521px] pr-[36px];
+}
+
+.vendor-card__desc {
+  @apply tg-body-md text-tg-dark-80 h-[96px];
+}
+
+/* Base mockup: just fills the illustration container */
+.vendor-mockup {
+  @apply absolute inset-0;
+}
+
+/* Onboarding: centered, pushed down 36px */
+.vendor-mockup--onboarding {
+  @apply flex items-center justify-center p-[20px];
+  top: 36px;
+}
+
+/* Tax Management: content positioned absolutely within */
+.vendor-mockup--table {
+  @apply overflow-hidden;
+}
+
+/* Risk Checks: true center */
+.vendor-mockup--risk {
+  @apply flex items-center justify-center p-[20px];
+}
+
+.vendor-mockup__card {
+  @apply bg-white rounded-[6px] p-[22px] shadow-sm w-[365px];
+}
+
+.vendor-mockup__table-card {
+  @apply bg-white/50 rounded-[4px] backdrop-blur-sm;
+  width: 943px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .vendor-management__inner {
+    @apply pt-[80px] pb-[60px];
+  }
+
+  .vendor-management__heading {
+    @apply mb-[40px];
+  }
+
+  .vendor-management__title {
+    font-size: 36px;
+    @apply max-w-none;
+  }
+
+  .vendor-card {
+    width: 480px;
+  }
+
+  .vendor-card__illustration {
+    @apply h-[340px];
+  }
+
+  .vendor-card__body {
+    @apply pr-[16px];
+  }
+
+  .vendor-mockup__card {
+    @apply max-w-full;
+  }
+}
+
+@media (max-width: 768px) {
+  .vendor-management__inner {
+    @apply pt-[60px] pb-[40px];
+  }
+
+  .vendor-management__title {
+    font-size: 28px;
+  }
+
+  .vendor-management__subtitle {
+    @apply text-body-md;
+  }
+
+  /* When Swiper is disabled on mobile, slides stack vertically */
+  .vendor-management__cards .swiper-wrapper {
+    @apply flex-col gap-[24px];
+  }
+
+  .vendor-card {
+    @apply flex-shrink w-full;
+  }
+
+  .vendor-card__illustration {
+    @apply h-[300px];
+  }
+
+  .vendor-card__body {
+    @apply pr-0 max-w-none;
+  }
+
+  .vendor-card__desc {
+    @apply h-auto;
+  }
+
+  .vendor-mockup__card {
+    @apply w-full max-w-full;
+  }
+
+  .vendor-mockup--onboarding {
+    @apply p-[12px];
+    top: 24px;
+  }
+
+  .vendor-mockup--risk {
+    @apply p-[12px];
+  }
+}

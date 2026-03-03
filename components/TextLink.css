@@ -1,0 +1,13 @@
+@reference "../src/app/globals.css";
+
+.text-link {
+  @apply font-inter font-normal text-body-md leading-[1.5] text-tg-dark-100 whitespace-pre cursor-pointer;
+}
+
+.text-link__arrow {
+  @apply inline-block transition-transform duration-300;
+}
+
+.text-link:hover .text-link__arrow {
+  transform: translateX(8px);
+}
