@@ -40,6 +40,13 @@
   @apply flex flex-col flex-shrink-0;
   width: 628px;
   height: auto;
+  transform: scale(1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.vendor-card--scaled {
+  transform: scale(0.95);
+  opacity: 0.6;
 }
 
 .vendor-card__title {

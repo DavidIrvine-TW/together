@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import TextLink from './TextLink';
 import './VendorManagement.css';
 
@@ -275,6 +275,19 @@ export default function VendorManagement() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+
+  const onGrabStart = useCallback((_swiper: unknown, event: Event) => {
+    if (event.target instanceof HTMLElement) {
+      const slide = event.target.closest('[data-index]');
+      if (slide) setDraggedIndex(Number(slide.getAttribute('data-index')));
+    }
+  }, []);
+
+  const onGrabEnd = useCallback(() => {
+    setDraggedIndex(null);
+  }, []);
+
   return (
     <section className="vendor-management">
       <div className="vendor-management__inner section-container">
@@ -295,9 +308,11 @@ export default function VendorManagement() {
             0: { enabled: false },
             768: { enabled: true },
           }}
+          onTouchStart={onGrabStart}
+          onTouchEnd={onGrabEnd}
         >
-          {cards.map((card, i) => (
-            <SwiperSlide key={i} className="vendor-card">
+          {[...cards, ...cards].map((card, i) => (
+            <SwiperSlide key={i} className={`vendor-card${draggedIndex !== null && draggedIndex !== i ? ' vendor-card--scaled' : ''}`} data-index={i}>
               <p className="vendor-card__title">{card.title}</p>
               <div className={`vendor-card__illustration ${card.bgClass}`}>
                 {isMobile ? (

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import Hero from '../../components/Hero';
+import ScrollAnimations from '../../components/ScrollAnimations';
 
 const APAutomation = dynamic(() => import('../../components/APAutomation'));
 const VendorManagement = dynamic(() => import('../../components/VendorManagement'));
@@ -10,6 +11,7 @@ const Footer = dynamic(() => import('../../components/Footer'));
 export default function Home() {
   return (
     <main className="w-full bg-white">
+      <ScrollAnimations />
       <Hero />
       <APAutomation />
       <VendorManagement />

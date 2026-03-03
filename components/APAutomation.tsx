@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 import './APAutomation.css';
 
 interface Tab {
@@ -69,13 +69,27 @@ function CheckIcon() {
 }
 
 export default function APAutomation() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '0px 0px -25% 0px' });
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [progressKey, setProgressKey] = useState(0);
   const [scanDone, setScanDone] = useState(false);
+  const [scanKey, setScanKey] = useState(0);
 
   const handleScanComplete = useCallback(() => {
     setScanDone(true);
   }, []);
+
+  // Reset scan animation after 5s and loop
+  useEffect(() => {
+    if (!scanDone || !isInView) return;
+    const timeout = setTimeout(() => {
+      setScanDone(false);
+      setScanKey(k => k + 1);
+    }, INTERVAL);
+    return () => clearTimeout(timeout);
+  }, [scanDone, isInView]);
 
   const goTo = useCallback((index: number) => {
     setActiveIndex(index);
@@ -83,15 +97,16 @@ export default function APAutomation() {
   }, []);
 
   useEffect(() => {
+    if (!isInView) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % tabs.length);
       setProgressKey((k) => k + 1);
     }, INTERVAL);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]);
 
   return (
-    <section className="ap-automation">
+    <section ref={sectionRef} className="ap-automation">
       <div className="ap-automation__container section-container">
         <div className="ap-automation__row">
           {/* LEFT: Heading + Tab List */}
@@ -114,7 +129,7 @@ export default function APAutomation() {
                     onClick={() => goTo(i)}
                     className={`ap-automation__tab ${isActive ? 'ap-automation__tab--active' : 'ap-automation__tab--inactive'}`}
                   >
-                    {isActive && (
+                    {isActive && isInView && (
                       <motion.span
                         key={progressKey}
                         className="ap-automation__tab-progress"
@@ -157,9 +172,10 @@ export default function APAutomation() {
             <div className="ap-illustration__inner ">
               {/* Invoice card with decorative overlays */}
               <div className="ap-illustration__card-wrap">
-                {!scanDone && (
+                {isInView && !scanDone && (
                   <>
                     <motion.div
+                      key={`scan-line-${scanKey}`}
                       className="ap-illustration__scan-line"
                       style={{ left: 0, width: '100%' }}
                       initial={{ bottom: 0 }}
@@ -167,6 +183,7 @@ export default function APAutomation() {
                       transition={{ duration: INTERVAL / 1000, ease: 'linear' }}
                     />
                     <motion.div
+                      key={`gradient-${scanKey}`}
                       className="ap-illustration__gradient-fade"
                       initial={{ height: 0 }}
                       animate={{ height: '100%' }}
@@ -294,7 +311,7 @@ export default function APAutomation() {
                   </div>
                   <div className="ap-illustration__step-content">
                     <span className="ap-illustration__step-label">Scan complete </span>
-                    <ScanTimer onComplete={handleScanComplete} />
+                    {isInView && <ScanTimer key={`timer-${scanKey}`} onComplete={handleScanComplete} />}
                   </div>
                 </div>
                 <span className="ap-illustration__step-connector">&#8250;&#8250;</span>
