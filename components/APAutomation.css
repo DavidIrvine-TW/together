@@ -411,11 +411,11 @@
 
 @media (max-width: 768px) {
   .ap-automation__container {
-    @apply pt-[60px] pb-[60px] px-0;
+    @apply pt-0 pb-[60px] px-0;
   }
 
   .ap-automation__left {
-    @apply px-[20px];
+    @apply px-[20px] border-t-0;
   }
 
   .ap-automation__heading {
@@ -443,6 +443,6 @@
   }
 
   .ap-automation__illustration {
-    @apply h-auto min-h-[360px];
+    @apply h-auto min-h-[360px] border-t-0;
   }
 }
