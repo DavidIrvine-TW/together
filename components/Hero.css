@@ -155,11 +155,30 @@
     @apply flex-col w-full;
   }
 
+  .hero__buttons .btn-primary {
+    @apply w-[169px] justify-center;
+  }
+
   .hero__logos {
     @apply grid-cols-2;
   }
 
   .hero__logo-cell {
     @apply h-[64px];
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px dashed var(--color-tg-white-10);
+  }
+
+  .hero__logo-cell:nth-child(2n) {
+    border-left: 1px dashed var(--color-tg-white-10);
+  }
+
+  .hero__logo-cell:nth-last-child(-n+3) {
+    border-bottom: 1px dashed var(--color-tg-white-10);
+  }
+
+  .hero__logo-cell:nth-last-child(-n+2) {
+    border-bottom: none;
   }
 }

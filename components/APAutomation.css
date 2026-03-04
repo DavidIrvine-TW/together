@@ -411,7 +411,11 @@
 
 @media (max-width: 768px) {
   .ap-automation__container {
-    @apply pt-[60px] pb-[60px];
+    @apply pt-[60px] pb-[60px] px-0;
+  }
+
+  .ap-automation__left {
+    @apply px-[20px];
   }
 
   .ap-automation__heading {
@@ -431,7 +435,7 @@
   }
 
   .ap-illustration__stepper {
-    @apply flex-wrap gap-[8px] rounded-[12px] justify-start;
+    @apply flex-col items-start justify-start gap-[8px] rounded-[12px];
   }
 
   .ap-illustration__step-connector {

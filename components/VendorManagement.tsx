@@ -311,7 +311,7 @@ export default function VendorManagement() {
           onTouchStart={onGrabStart}
           onTouchEnd={onGrabEnd}
         >
-          {[...cards, ...cards].map((card, i) => (
+          {(isMobile ? cards : [...cards, ...cards]).map((card, i) => (
             <SwiperSlide key={i} className={`vendor-card${draggedIndex !== null && draggedIndex !== i ? ' vendor-card--scaled' : ''}`} data-index={i}>
               <p className="vendor-card__title">{card.title}</p>
               <div className={`vendor-card__illustration ${card.bgClass}`}>

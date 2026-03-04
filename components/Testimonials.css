@@ -142,6 +142,19 @@
   .testimonials__quote-card {
     height: auto;
     min-height: 220px;
+    padding: 20px 22px;
+  }
+
+  .testimonials__quote-text {
+    @apply text-[18px];
+  }
+
+  .testimonials__author-name {
+    @apply text-[14px];
+  }
+
+  .testimonials__author-role {
+    @apply text-[12px];
   }
 
   .testimonials__logo-card--remax {
